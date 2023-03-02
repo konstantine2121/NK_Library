@@ -17,45 +17,19 @@ namespace NK_Library.Dto
         public string Genre { get; }
         public bool AdultOnly { get; }
 
-        #region Equals
-
-        public static bool operator == (Book book1, Book book2)
-        {
-            if ( Object.Equals(book1, null))
+        public bool InfoEquals(Book book)
+        {   
+            if (book == null)
             {
-                return Object.Equals(book2, null);
+                return false;            
             }
 
-            return book1.Equals(book2);
+            return
+                book.Author.Equals(Author) &&
+                book.Name.Equals(Name) &&
+                book.Genre.Equals(Genre) &&
+                book.AdultOnly.Equals(AdultOnly);
         }
-
-        public static bool operator !=(Book book1, Book book2)
-        {
-            return !(book1 == book2);
-        }
-
-        public override bool Equals(object obj)
-        {
-            var book = obj as Book;
-
-            if (book != null)
-            {
-                return
-                    book.Author.Equals(Author) &&
-                    book.Name.Equals(Name) &&
-                    book.Genre.Equals(Genre) &&
-                    book.AdultOnly.Equals(AdultOnly);
-            }
-
-            return false;
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        #endregion Equals
     }
 
 }
