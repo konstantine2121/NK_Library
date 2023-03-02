@@ -19,9 +19,9 @@ namespace NK_Library.Dto
 
         public static bool operator == (Client client1, Client client2)
         {
-            if (Object.Equals(client1, null) || Object.Equals(client2, null))
+            if (Object.Equals(client1, null))
             {
-                return false;
+                return Object.Equals(client2, null);
             }
 
             return client1.Equals(client2);

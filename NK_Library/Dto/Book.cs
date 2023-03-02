@@ -21,9 +21,9 @@ namespace NK_Library.Dto
 
         public static bool operator == (Book book1, Book book2)
         {
-            if ( Object.Equals(book1, null) || Object.Equals(book2, null))
+            if ( Object.Equals(book1, null))
             {
-                return false;
+                return Object.Equals(book2, null);
             }
 
             return book1.Equals(book2);

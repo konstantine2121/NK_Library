@@ -1,4 +1,7 @@
-﻿using System;
+﻿using NK_Library.BusinessComponents;
+using NK_Library.Dto;
+using NK_Library.Interfaces.BusinessComponents;
+using System;
 
 namespace NK_Library
 {
@@ -128,7 +131,12 @@ namespace NK_Library
 
         static void Main(string[] args)
         {
-            
+            var book = new Book("1", "n", "g", false);
+
+            IInfoPrinter<Book> infoPrinter = new BookInfoPrinter();
+
+            infoPrinter.PrintInfo(null);
+            infoPrinter.PrintInfo(book);
         }
     }
 }
