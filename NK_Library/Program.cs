@@ -131,12 +131,27 @@ namespace NK_Library
 
         static void Main(string[] args)
         {
+            TestClientPrinters();
+        }
+
+        static void TestBookPrinters()
+        {
             var book = new Book("1", "n", "g", false);
 
             IInfoPrinter<Book> infoPrinter = new BookInfoPrinter();
 
             infoPrinter.PrintInfo(null);
             infoPrinter.PrintInfo(book);
+        }
+
+        static void TestClientPrinters()
+        {
+            var client = new Client("Фио", DateTime.Now, "+7******");
+
+            IInfoPrinter<Client> infoPrinter = new ClientInfoPrinter();
+
+            infoPrinter.PrintInfo(null);
+            infoPrinter.PrintInfo(client);
         }
     }
 }

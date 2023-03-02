@@ -7,7 +7,7 @@ namespace NK_Library.BusinessComponents
     internal class BookInfoPrinter : IInfoPrinter<Book>
     {
         /// <summary>
-        ///// {Author, 20} {Name, 20} {Genre, 20} {AdultOnly, 5}        
+        /// {Author, -20} {Name, -20} {Genre, -20} {AdultOnly, -5}        
         /// </summary>
         private const string Format = "{0, -20} {1, -20} {2, -20} {3, -5}";
 

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessComponents\ClientInfoPrinter.cs" />
     <Compile Include="Console\In.cs" />
     <Compile Include="BusinessComponents\BookInfoPrinter.cs" />
     <Compile Include="BusinessComponents\Library.cs" />
