@@ -1,7 +1,9 @@
-﻿using NK_Library.BusinessComponents.InfoPrinters;
+﻿using NK_Library.BusinessComponents.Builders;
+using NK_Library.BusinessComponents.InfoPrinters;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
 using System;
+using System.Linq;
 
 namespace NK_Library
 {
@@ -131,7 +133,7 @@ namespace NK_Library
 
         static void Main(string[] args)
         {
-            TestClientPrinters();
+            
         }
 
         static void TestBookPrinters()
@@ -152,6 +154,22 @@ namespace NK_Library
 
             infoPrinter.PrintInfo(null);
             infoPrinter.PrintInfo(client);
+        }
+
+        static void TestLibraryFactory()
+        {
+            var library = new LibraryFactoryBuilder().Build().Create();
+
+            var clientsPrinter = new ClientInfoPrinter();
+            var booksPrinter = new BookInfoPrinter();
+
+            clientsPrinter.PrintInfos(
+                library.ClientsJournal
+                .Clients.Values);
+
+            booksPrinter.PrintInfos(
+                library.BooksJournal
+                .Books.Values);
         }
     }
 }

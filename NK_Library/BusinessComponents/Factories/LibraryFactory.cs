@@ -41,12 +41,12 @@ namespace NK_Library.BusinessComponents.Factories
 
             foreach (var book in books) 
             {
-                library.RegisterBook(book);
+                library.BooksJournal.RegisterBook(book);
             }
             
             foreach (var client in clients) 
             {
-                library.RegisterClient(client);
+                library.ClientsJournal.RegisterClient(client);
             }
             
             return library;

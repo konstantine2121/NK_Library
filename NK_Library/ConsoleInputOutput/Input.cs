@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace NK_Library.BusinessComponents
+namespace NK_Library.ConsoleInputOutput
 {
     /// <summary>
     /// Методы для считывания значений с консоли.
     /// </summary>
-    internal static class In
+    internal static class Input
     {
         /// <summary>
         /// Считывает с консоли положительное значение натурального числа.
@@ -26,19 +26,53 @@ namespace NK_Library.BusinessComponents
 
                 if (parsed == false)
                 {
-                    Out.PrintWarning("Не получилось распознать значение. Попробуйте еще раз.");
+                    Output.PrintWarning("Не получилось распознать значение. Попробуйте еще раз.");
                 }
                 else
                 {
                     if (result < 0)
                     {
                         parsed = false;
-                        Out.PrintWarning("Значение не может быть отрицательным. Попробуйте еще раз.");
+                        Output.PrintWarning("Значение не может быть отрицательным. Попробуйте еще раз.");
                     }
                 }
             }
 
             return result;
+        }
+
+        /// <summary>
+        /// Считывает с консоли булево значение.
+        /// </summary>
+        /// <param name="message">Информационное сообщение, отображаемое перед вводом данных.</param>
+        /// <returns>Булево значение числа.</returns>
+        public static bool ReadBoolean(string message)
+        {
+            int result = 0;
+            bool parsed = false;
+
+            while (parsed == false)
+            {
+                Console.Write(message);
+
+                var input = Console.ReadLine();
+                parsed = int.TryParse(input, out result);
+
+                if (parsed == false)
+                {
+                    Output.PrintWarning("Не получилось распознать значение. Попробуйте еще раз.");
+                }
+                else
+                {
+                    if (result  != 0 && result != 1)
+                    {
+                        parsed = false;
+                        Output.PrintWarning("Значение должно равняться 0 или 1. Попробуйте еще раз.");
+                    }
+                }
+            }
+
+            return result == 0 ? false : true;
         }
 
         /// <summary>
@@ -60,7 +94,7 @@ namespace NK_Library.BusinessComponents
 
                 if (parsed == false)
                 {
-                    Out.PrintWarning("Не получилось распознать значение. Попробуйте еще раз.");
+                    Output.PrintWarning("Не получилось распознать значение. Попробуйте еще раз.");
                 }
             }
 
@@ -83,7 +117,7 @@ namespace NK_Library.BusinessComponents
 
                 if (string.IsNullOrEmpty(input))
                 {
-                    Out.PrintWarning("Введена пустая строка. Попробуйте еще раз.");
+                    Output.PrintWarning("Введена пустая строка. Попробуйте еще раз.");
                 }
             }
 

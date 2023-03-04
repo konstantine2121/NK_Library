@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NK_Library.BusinessComponents
+namespace NK_Library.ConsoleInputOutput
 {
     /// <summary>
     /// Вывод сообщения в консоль, используя заданный цвет.
     /// </summary>
-    internal static class Out
+    internal static class Output
     {
         private const ConsoleColor DefaultBackgroundColor =  ConsoleColor.Black;
         private const ConsoleColor DefaultForegroundColor =  ConsoleColor.White;

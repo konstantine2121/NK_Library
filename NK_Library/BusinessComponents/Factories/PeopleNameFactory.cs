@@ -556,7 +556,7 @@ namespace NK_Library.BusinessComponents.Factories
             var firstNameInitial = GetRandomInitial();
             var middleNameInitial = GetRandomInitial();
 
-            return $"{surname} {firstNameInitial}. {middleNameInitial}.";
+            return $"{surname} {firstNameInitial}.{middleNameInitial}.";
         }
 
         private string GetRandomSurname()

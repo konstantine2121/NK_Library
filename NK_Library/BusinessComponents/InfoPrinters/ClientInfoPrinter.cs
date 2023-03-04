@@ -1,4 +1,5 @@
-﻿using NK_Library.Dto;
+﻿using NK_Library.ConsoleInputOutput;
+using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
 using System.Collections.Generic;
 
@@ -15,20 +16,20 @@ namespace NK_Library.BusinessComponents.InfoPrinters
         {
             if (client == null)
             {
-                Out.PrintWarning("Нет ссылки на клиента.");
+                Output.PrintWarning("Нет ссылки на клиента.");
                 return;
             }
 
             PrintHeaders();
 
-            Out.PrintInfo(GetClientInfo(client));
+            System.Console.WriteLine(GetClientInfo(client));
         }
 
         public void PrintInfos(IEnumerable<Client> clients)
         {
             if (clients == null)
             {
-                Out.PrintWarning("Нет ссылки на список клиентов.");
+                Output.PrintWarning("Нет ссылки на список клиентов.");
                 return;
             }
 
@@ -36,16 +37,16 @@ namespace NK_Library.BusinessComponents.InfoPrinters
 
             foreach (var client in clients)
             {
-                Out.PrintInfo(GetClientInfo(client));
+                System.Console.WriteLine(GetClientInfo(client));
             }
         }
 
         public void PrintHeaders()
         {
-            Out.PrintInfo(Format, "ФИО", "День рождения", "Номер телефона");
+            Output.PrintInfo(Format, "ФИО", "День рождения", "Номер телефона");
         }
 
-        private string GetClientInfo(Client client)
+        public string GetClientInfo(Client client)
         {
             if (client == null)
             {
