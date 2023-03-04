@@ -1,4 +1,4 @@
-﻿using NK_Library.BusinessComponents;
+﻿using NK_Library.BusinessComponents.InfoPrinters;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
 using System;
@@ -136,7 +136,7 @@ namespace NK_Library
 
         static void TestBookPrinters()
         {
-            var book = new Book("1", "n", "g", false);
+            var book = new Book("1", "n", "g", false, 1900);
 
             IInfoPrinter<Book> infoPrinter = new BookInfoPrinter();
 

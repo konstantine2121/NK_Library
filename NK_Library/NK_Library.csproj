@@ -43,15 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessComponents\ClientInfoPrinter.cs" />
+    <Compile Include="BusinessComponents\Builders\LibraryFactoryBuilder.cs" />
+    <Compile Include="BusinessComponents\Factories\LibraryFactory.cs" />
+    <Compile Include="BusinessComponents\Factories\RandomClientFactory.cs" />
+    <Compile Include="BusinessComponents\InfoPrinters\ClientInfoPrinter.cs" />
+    <Compile Include="BusinessComponents\Factories\RandomBookFactory.cs" />
+    <Compile Include="BusinessComponents\Factories\PeopleNameFactory.cs" />
     <Compile Include="BusinessComponents\IdCounter.cs" />
+    <Compile Include="BusinessComponents\RandomContainer.cs" />
     <Compile Include="Console\In.cs" />
-    <Compile Include="BusinessComponents\BookInfoPrinter.cs" />
+    <Compile Include="BusinessComponents\InfoPrinters\BookInfoPrinter.cs" />
     <Compile Include="BusinessComponents\Library.cs" />
     <Compile Include="Console\Out.cs" />
     <Compile Include="Dto\Book.cs" />
     <Compile Include="Dto\BookOutside.cs" />
     <Compile Include="Dto\Client.cs" />
+    <Compile Include="Interfaces\BusinessComponents\Factories\ICreator.cs" />
     <Compile Include="Interfaces\BusinessComponents\IInfoPrinter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

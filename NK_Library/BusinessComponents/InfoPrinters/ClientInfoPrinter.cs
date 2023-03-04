@@ -1,9 +1,8 @@
 ﻿using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
-using System;
 using System.Collections.Generic;
 
-namespace NK_Library.BusinessComponents
+namespace NK_Library.BusinessComponents.InfoPrinters
 {
     internal class ClientInfoPrinter : IInfoPrinter<Client>
     {

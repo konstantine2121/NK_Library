@@ -12,7 +12,9 @@ namespace NK_Library.Dto
         }
 
         public string FullName { get; }
+
         public DateTime Birthday { get; }
+
         public string PhoneNumber { get; }
 
         #region Equals

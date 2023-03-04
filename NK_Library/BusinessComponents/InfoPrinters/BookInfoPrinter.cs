@@ -2,14 +2,14 @@
 using NK_Library.Interfaces.BusinessComponents;
 using System.Collections.Generic;
 
-namespace NK_Library.BusinessComponents
+namespace NK_Library.BusinessComponents.InfoPrinters
 {
     internal class BookInfoPrinter : IInfoPrinter<Book>
     {
         /// <summary>
-        /// {Author, -20} {Name, -20} {Genre, -20} {AdultOnly, -5}        
+        /// {Author, -20} {Name, -20} {Genre, -20} {AdultOnly, -5} {YearOfPublication, -5}
         /// </summary>
-        private const string Format = "{0, -20} {1, -20} {2, -20} {3, -5}";
+        private const string Format = "{0, -20} {1, -20} {2, -20} {3, -5} {4, -5}";
 
         public void PrintInfo(Book book)
         {
@@ -42,7 +42,7 @@ namespace NK_Library.BusinessComponents
 
         public void PrintHeaders()
         {
-            Out.PrintInfo(Format, "Автор", "Название", "Жанр", "18+");
+            Out.PrintInfo(Format, "Автор", "Название", "Жанр", "18+", "Год");
         }
 
         private string GetBookInfo(Book book)
@@ -56,7 +56,8 @@ namespace NK_Library.BusinessComponents
                     book.Author,
                     book.Name,
                     book.Genre,
-                    book.AdultOnly.ToString());
+                    book.AdultOnly.ToString(),
+                    book.YearOfPublication);
         }
     }
 }
