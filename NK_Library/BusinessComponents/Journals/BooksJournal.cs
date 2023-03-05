@@ -41,6 +41,18 @@ namespace NK_Library.BusinessComponents.Journals
             return true;
         }
 
+        public bool UnregisterBook(int bookId)
+        {
+            if (!CheckBookExists(bookId))
+            {
+                return false;
+            }
+
+            _books.Remove(bookId);
+
+            return true;
+        }
+
         /// <summary>
         /// Книга есть в списке библиотеки.
         /// </summary>

@@ -22,40 +22,40 @@ namespace NK_Library.BusinessComponents.ManualCreators
             bool adultOnly = default;
             int yearOfPublication = default;
 
-            bool success = false;
+            bool continueInput = false;
 
-            success = InterruptableInput.TryReadString("Введите имя автора:", out author);
+            continueInput = InterruptableInput.TryReadString("Введите имя автора:", out author);
 
-            if (!success) 
+            if (!continueInput) 
             {
                 PrintAbortWarning();
                 return false;
             }
 
-            success = InterruptableInput.TryReadString("Введите имя книги:", out bookName);
+            continueInput = InterruptableInput.TryReadString("Введите имя книги:", out bookName);
 
-            if (!success)
+            if (!continueInput)
             {
                 PrintAbortWarning();
                 return false;
             }
-            success = InterruptableInput.TryReadString("Введите жанр:", out genre);
+            continueInput = InterruptableInput.TryReadString("Введите жанр:", out genre);
 
-            if (!success)
+            if (!continueInput)
             {
                 PrintAbortWarning();
                 return false;
             }
-            success = InterruptableInput.TryReadBoolean("Введите есть ли ограничение по возрасту (0 - нет / 1-есть):", out adultOnly);
+            continueInput = InterruptableInput.TryReadBoolean("Введите есть ли ограничение по возрасту (0 - нет / 1-есть):", out adultOnly);
 
-            if (!success)
+            if (!continueInput)
             {
                 PrintAbortWarning();
                 return false;
             }
-            success = InterruptableInput.TryReadPositiveInteger("Введите год публикации:", out yearOfPublication);
+            continueInput = InterruptableInput.TryReadPositiveInteger("Введите год публикации:", out yearOfPublication);
 
-            if (!success)
+            if (!continueInput)
             {
                 PrintAbortWarning();
                 return false;

@@ -40,6 +40,18 @@ namespace NK_Library.BusinessComponents.Journals
             return true;
         }
 
+        public bool UnregisterClient(int clientId)
+        {
+            if (!CheckClientExists(clientId))
+            {
+                return false;
+            }
+
+            _clients.Remove(clientId);
+
+            return true;
+        }
+
         public bool UpdateClient(int clientId, Client newInfo)
         {
 

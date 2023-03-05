@@ -54,6 +54,7 @@
     <Compile Include="BusinessComponents\Journals\BooksJournal.cs" />
     <Compile Include="BusinessComponents\Journals\ClientsJournal.cs" />
     <Compile Include="BusinessComponents\ManualCreators\BookCreator.cs" />
+    <Compile Include="BusinessComponents\ManualCreators\ClientCreator.cs" />
     <Compile Include="BusinessComponents\RandomContainer.cs" />
     <Compile Include="BusinessComponents\Selectors\BookSelector.cs" />
     <Compile Include="BusinessComponents\Selectors\ClientSelector.cs" />
