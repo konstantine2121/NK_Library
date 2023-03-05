@@ -1,4 +1,5 @@
 ﻿using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
+using System;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
@@ -6,24 +7,33 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
     {
         private IMenuState _currentState;
 
-        public MenuContext()
+        public MenuContext(Library library)
         {
+            if (library == null)
+            {
+                throw new ArgumentNullException(nameof(library));
+            }
 
+            MainMenu = new MainMenu(this, this);
+            ExitConfirmationDidalog = new ExitConfirmationDidalog(this, this);
+            BooksJournalMenu = new BooksJournalMenu(this, this, library.BooksJournal);
+            //ClientsJournalMenu
+            //BookOutsideJournalMenu
+
+            _currentState = MainMenu;
         }
 
         #region IMenuStatesProvider Implementation
         
-        public IMenuState MainMenu => throw new System.NotImplementedException();
+        public IMenuState MainMenu { get; }
 
-        public IMenuState ExitConfirmationDidalog => throw new System.NotImplementedException();
+        public IMenuState ExitConfirmationDidalog { get; }
 
-        public IMenuState Exit => throw new System.NotImplementedException();
+        public IMenuState BooksJournalMenu { get; }
 
-        public IMenuState BooksJournalMenu => throw new System.NotImplementedException();
+        public IMenuState ClientsJournalMenu { get; }
 
-        public IMenuState ClientsJournalMenu => throw new System.NotImplementedException();
-
-        public IMenuState BookOutsideJournalMenu => throw new System.NotImplementedException();
+        public IMenuState BookOutsideJournalMenu { get; }
 
         #endregion IMenuStatesProvider Implementation
 
@@ -31,6 +41,8 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
         #region IMenuContext Implementation
         
         public string Name => "Главное меню";
+
+        public bool InvalidState => _currentState == null;
 
         public void PerformAction()
         {

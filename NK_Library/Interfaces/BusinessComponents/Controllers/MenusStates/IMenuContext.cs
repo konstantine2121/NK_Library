@@ -2,6 +2,8 @@
 {
     internal interface IMenuContext : IMenuState
     {
+        bool InvalidState { get; }
+
         void SetNextState(IMenuState state);
     }
 }

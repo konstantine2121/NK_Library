@@ -46,6 +46,8 @@
     <Compile Include="BusinessComponents\Builders\LibraryFactoryBuilder.cs" />
     <Compile Include="BusinessComponents\Controllers\MenuCommands\MenuCommand.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\BaseMenuState.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\BooksJournalMenu.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\ExitConfirmationDidalog.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\MainMenu.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\MenuContext.cs" />
     <Compile Include="BusinessComponents\Factories\LibraryFactory.cs" />

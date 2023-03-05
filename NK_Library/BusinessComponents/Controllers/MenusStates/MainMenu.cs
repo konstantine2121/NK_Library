@@ -10,14 +10,16 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
         {
         }
 
+        public override string Name => "Главное меню";
+
         protected override void RegisterCommands()
         {
             Commands.Clear();
 
             Commands.Add(1, new MenuCommand("Журнал книг.", OpenBooksJournal));
-            Commands.Add(1, new MenuCommand("Журнал клиентов.", OpenClientsJournal));
-            Commands.Add(1, new MenuCommand("Журнал выдачи книг.", OpenBooksOutsideJournal));
-            Commands.Add(1, new MenuCommand("Выход из программы.", OpenExitDialog));
+            Commands.Add(2, new MenuCommand("Журнал клиентов.", OpenClientsJournal));
+            Commands.Add(3, new MenuCommand("Журнал выдачи книг.", OpenBooksOutsideJournal));
+            Commands.Add(4, new MenuCommand("Выход из программы.", OpenExitDialog));
         }
 
         private void OpenBooksJournal()

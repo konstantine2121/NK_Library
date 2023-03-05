@@ -1,9 +1,11 @@
 ﻿using NK_Library.BusinessComponents.Builders;
+using NK_Library.BusinessComponents.Controllers.MenusStates;
 using NK_Library.BusinessComponents.InfoPrinters;
 using NK_Library.BusinessComponents.ManualCreators;
 using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
+using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
 using System;
 using System.Linq;
 
@@ -135,7 +137,7 @@ namespace NK_Library
 
         static void Main(string[] args)
         {
-            TestManualCreators();
+            TestMenu();
         }
 
         static void TestBookPrinters()
@@ -208,6 +210,18 @@ namespace NK_Library
             clientsPrinter.PrintInfo(client);
 
             booksPrinter.PrintInfo(book);
+        }
+
+        static void TestMenu()
+        {
+            var library = new LibraryFactoryBuilder().Build().Create();
+
+            IMenuContext menu = new MenuContext(library);
+
+            while(menu.InvalidState == false)
+            {
+                menu.PerformAction();
+            }
         }
     }
 }

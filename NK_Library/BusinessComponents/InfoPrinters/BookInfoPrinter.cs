@@ -1,6 +1,7 @@
 ﻿using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
+using System;
 using System.Collections.Generic;
 
 namespace NK_Library.BusinessComponents.InfoPrinters
@@ -22,7 +23,7 @@ namespace NK_Library.BusinessComponents.InfoPrinters
 
             PrintHeaders();
 
-            System.Console.WriteLine(GetBookInfo(book));
+            Console.WriteLine(GetBookInfo(book));
         }
 
         public void PrintInfos(IEnumerable<Book> books)
@@ -37,13 +38,34 @@ namespace NK_Library.BusinessComponents.InfoPrinters
 
             foreach (Book book in books)
             {
-                System.Console.WriteLine(GetBookInfo(book));
+                Console.WriteLine(GetBookInfo(book));
+            }
+        }
+
+        public void PrintInfos(IEnumerable<KeyValuePair<int, Book> > books)
+        {
+            if (books == null)
+            {
+                Output.PrintWarning("Нет ссылки на коллекцию книг.");
+                return;
+            }
+
+            Output.PrintInfo($"{"Id",5} {GetHeadersLine()}");
+
+            foreach (var pair in books)
+            {
+                Console.WriteLine( $"{pair.Key, 5} {GetBookInfo(pair.Value)}");
             }
         }
 
         public void PrintHeaders()
         {
-            Output.PrintInfo(Format, "Автор", "Название", "Жанр", "18+", "Год");
+            Output.PrintInfo(GetHeadersLine());
+        }
+
+        private string GetHeadersLine()
+        {
+            return string.Format(Format, "Автор", "Название", "Жанр", "18+", "Год");
         }
 
         public string GetBookInfo(Book book)

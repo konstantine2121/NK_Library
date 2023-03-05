@@ -33,7 +33,7 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             RegisterCommands();
         }
 
-        public virtual string Name => "Базовое имя";
+        public abstract string Name { get; }
 
         /// <summary>
         /// Зарегистрировать команды для словаря Commands.
@@ -45,6 +45,7 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             Console.Clear();
             Output.PrintInfo(Name);
             PrintCommands();
+            Console.WriteLine();
             InputCommandAndExecute();
         }
 
@@ -52,14 +53,14 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
         {
             foreach (var command in Commands) 
             {
-                var text = $"{command.Key} - {command.Value}";
+                var text = $"{command.Key} - {command.Value.Description}";
                 Console.WriteLine(text);
             }
         }
 
         protected virtual void InputCommandAndExecute()
         {
-            var number = Input.ReadPositiveInteger("Введите номер команды:");
+            var number = Input.ReadPositiveInteger("Введите номер команды: ");
 
             if (Commands.ContainsKey(number))
             {
@@ -68,12 +69,13 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             else
             {
                 Output.PrintWarning("Команды с таким номером нет.");
+                PrintInputWelcome();
             }
         }
 
         protected virtual void PrintInputWelcome()
         {
-            Console.WriteLine("Нажмите любую кнопку для ввода другой команды.");
+            Console.WriteLine("\nНажмите любую кнопку для ввода другой команды.");
             Console.ReadKey(true);
         }
     }
