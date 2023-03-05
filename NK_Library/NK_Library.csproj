@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessComponents\Builders\LibraryFactoryBuilder.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\MenuStateMachine.cs" />
     <Compile Include="BusinessComponents\Factories\LibraryFactory.cs" />
     <Compile Include="BusinessComponents\Factories\RandomClientFactory.cs" />
     <Compile Include="BusinessComponents\InfoPrinters\ClientInfoPrinter.cs" />
