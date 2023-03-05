@@ -8,9 +8,9 @@ namespace NK_Library.BusinessComponents.InfoPrinters
     internal class BookInfoPrinter : IInfoPrinter<Book>
     {
         /// <summary>
-        /// {Author, -20} {Name, -20} {Genre, -20} {AdultOnly, -5} {YearOfPublication, -5}
+        /// {Author, -20} {Name, -20} {Genre, -20} {AdultOnly, -5} {YearOfPublication, -6}
         /// </summary>
-        private const string Format = "{0, -20} {1, -20} {2, -20} {3, -5} {4, -5}";
+        private const string Format = "{0, -20} {1, -20} {2, -20} {3, -5} {4, -6}";
 
         public void PrintInfo(Book book)
         {

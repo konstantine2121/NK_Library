@@ -1,5 +1,7 @@
 ﻿using NK_Library.BusinessComponents.Builders;
 using NK_Library.BusinessComponents.InfoPrinters;
+using NK_Library.BusinessComponents.ManualCreators;
+using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
 using System;
@@ -133,7 +135,7 @@ namespace NK_Library
 
         static void Main(string[] args)
         {
-            
+            TestManualCreators();
         }
 
         static void TestBookPrinters()
@@ -170,6 +172,42 @@ namespace NK_Library
             booksPrinter.PrintInfos(
                 library.BooksJournal
                 .Books.Values);
+        }
+
+        static void TestManualCreators()
+        {
+            var bookCreator = new BookCreator();
+            var clientCreator = new ClientCreator();
+
+            var clientsPrinter = new ClientInfoPrinter();
+            var booksPrinter = new BookInfoPrinter();
+
+            Client client;
+
+            if (clientCreator.TryCreate(out client))
+            {
+                Output.PrintInfo("Клиент успешно зарегистрирован!");
+            }
+            else
+            {
+                Output.PrintWarning("Операция отменена.");
+            }
+
+            Book book;
+
+            if (bookCreator.TryCreate(out book))
+            {
+                Output.PrintInfo("Книга успешно зарегистрирована!");
+            }
+            else
+            {
+                Output.PrintWarning("Операция отменена.");
+            }
+
+
+            clientsPrinter.PrintInfo(client);
+
+            booksPrinter.PrintInfo(book);
         }
     }
 }

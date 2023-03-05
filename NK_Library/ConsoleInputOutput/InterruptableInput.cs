@@ -83,7 +83,8 @@ namespace NK_Library.ConsoleInputOutput
                 }
             }
 
-            return integer == 0 ? false : true;
+            result = integer == 0 ? false : true;
+            return true;
         }
 
         /// <summary>
@@ -147,6 +148,7 @@ namespace NK_Library.ConsoleInputOutput
                 }
             }
 
+            result = input;
             return true;
         }
 
