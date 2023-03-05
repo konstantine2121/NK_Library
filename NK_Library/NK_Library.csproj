@@ -44,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessComponents\Builders\LibraryFactoryBuilder.cs" />
-    <Compile Include="BusinessComponents\Controllers\MenusStates\MenuStateMachine.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenuCommands\MenuCommand.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\BaseMenuState.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\MainMenu.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\MenuContext.cs" />
     <Compile Include="BusinessComponents\Factories\LibraryFactory.cs" />
     <Compile Include="BusinessComponents\Factories\RandomClientFactory.cs" />
     <Compile Include="BusinessComponents\InfoPrinters\ClientInfoPrinter.cs" />
@@ -68,6 +71,9 @@
     <Compile Include="Dto\BookOutside.cs" />
     <Compile Include="Dto\Client.cs" />
     <Compile Include="Enums\ConsoleComands.cs" />
+    <Compile Include="Interfaces\BusinessComponents\Controllers\MenusStates\IMenuContext.cs" />
+    <Compile Include="Interfaces\BusinessComponents\Controllers\MenusStates\IMenuState.cs" />
+    <Compile Include="Interfaces\BusinessComponents\Controllers\MenusStates\IMenuStatesProvider.cs" />
     <Compile Include="Interfaces\BusinessComponents\Factories\ICreator.cs" />
     <Compile Include="Interfaces\BusinessComponents\IInfoPrinter.cs" />
     <Compile Include="Interfaces\BusinessComponents\ManualCreators\IManualCreator.cs" />
@@ -78,5 +84,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

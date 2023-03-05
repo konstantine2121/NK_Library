@@ -1,8 +1,8 @@
-﻿using NK_Library.ConsoleInputOutput;
+﻿using NK_Library.BusinessComponents.Controllers.MenuCommands;
+using NK_Library.ConsoleInputOutput;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
@@ -13,12 +13,27 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
         /// </summary>
         protected readonly Dictionary<int, MenuCommand> Commands = new Dictionary<int, MenuCommand>();
 
-        public virtual string Name => "Базовое имя";
+        protected readonly IMenuContext MenuContext;
+        protected readonly IMenuStatesProvider StatesProvider;
 
-        public BaseMenuState() 
+        public BaseMenuState(IMenuContext menuContext, IMenuStatesProvider statesProvider)
         {
+            if (menuContext == null)
+            {
+                throw new ArgumentNullException(nameof(menuContext));
+            }
+
+            if (statesProvider== null)
+            {
+                throw new ArgumentNullException(nameof(statesProvider));
+            }
+
+            MenuContext = menuContext;
+            StatesProvider = statesProvider;
             RegisterCommands();
         }
+
+        public virtual string Name => "Базовое имя";
 
         /// <summary>
         /// Зарегистрировать команды для словаря Commands.
@@ -42,13 +57,13 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             }
         }
 
-        protected void InputCommandAndExecute()
+        protected virtual void InputCommandAndExecute()
         {
             var number = Input.ReadPositiveInteger("Введите номер команды:");
 
             if (Commands.ContainsKey(number))
             {
-                Commands[number].Invoke();
+                Commands[number].PerformAction();
             }
             else
             {
