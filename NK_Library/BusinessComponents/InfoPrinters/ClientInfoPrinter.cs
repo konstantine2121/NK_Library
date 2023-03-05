@@ -3,6 +3,7 @@ using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NK_Library.BusinessComponents.InfoPrinters
 {
@@ -52,7 +53,11 @@ namespace NK_Library.BusinessComponents.InfoPrinters
 
             Output.PrintInfo($"{"Id",5} {GetHeadersLine()}");
 
-            foreach (var pair in clients)
+            var list = clients.ToList();
+
+            list.Sort((item1, item2) => item1.Key.CompareTo(item2.Key));
+
+            foreach (var pair in list)
             {
                 Console.WriteLine($"{pair.Key,5} {GetClientInfo(pair.Value)}");
             }
