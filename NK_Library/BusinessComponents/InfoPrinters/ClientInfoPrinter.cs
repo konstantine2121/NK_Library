@@ -1,6 +1,7 @@
 ﻿using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents;
+using System;
 using System.Collections.Generic;
 
 namespace NK_Library.BusinessComponents.InfoPrinters
@@ -41,9 +42,30 @@ namespace NK_Library.BusinessComponents.InfoPrinters
             }
         }
 
+        public void PrintInfos(IEnumerable<KeyValuePair<int, Client>> clients)
+        {
+            if (clients == null)
+            {
+                Output.PrintWarning("Нет ссылки на список клиентов.");
+                return;
+            }
+
+            Output.PrintInfo($"{"Id",5} {GetHeadersLine()}");
+
+            foreach (var pair in clients)
+            {
+                Console.WriteLine($"{pair.Key,5} {GetClientInfo(pair.Value)}");
+            }
+        }
+
         public void PrintHeaders()
         {
-            Output.PrintInfo(Format, "ФИО", "День рождения", "Номер телефона");
+            Output.PrintInfo(GetHeadersLine());
+        }
+
+        private string GetHeadersLine()
+        {
+            return string.Format(Format, "ФИО", "День рождения", "Номер телефона");
         }
 
         public string GetClientInfo(Client client)
