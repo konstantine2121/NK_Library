@@ -1,5 +1,4 @@
-﻿
-using NK_Library.Dto;
+﻿using NK_Library.Dto;
 using System.Collections.Generic;
 using System.Linq;
 

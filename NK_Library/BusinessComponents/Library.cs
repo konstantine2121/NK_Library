@@ -17,17 +17,17 @@ namespace NK_Library.BusinessComponents
         /// <summary>
         /// Журнал учета всех книг в библиотеке.
         /// </summary>
-        public BooksJournal BooksJournal { get; private set; }
+        public BooksJournal BooksJournal { get; }
 
         /// <summary>
         /// Журнал учета клиентов.
         /// </summary>
-        public ClientsJournal ClientsJournal { get; private set; }
+        public ClientsJournal ClientsJournal { get; }
 
         /// <summary>
         /// Журнал учата выдачи книг клиентам.
         /// </summary>
-        public BookOutsideJournal BookOutsideJournal { get; private set; }
+        public BookOutsideJournal BookOutsideJournal { get; }
     }
 
 }
