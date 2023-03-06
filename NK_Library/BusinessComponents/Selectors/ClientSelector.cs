@@ -1,5 +1,4 @@
-﻿using NK_Library.BusinessComponents.Journals;
-using NK_Library.ConsoleInputOutput;
+﻿using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.Journals;
 using NK_Library.Interfaces.BusinessComponents.Selectors;

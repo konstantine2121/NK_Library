@@ -5,8 +5,6 @@ namespace NK_Library
     class Program
     {
 
-       
-
         static void Main(string[] args)
         {
             var moduleBuilder = new LibraryModuleBuilder();

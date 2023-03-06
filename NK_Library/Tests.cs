@@ -12,7 +12,6 @@ namespace NK_Library
 {
     internal class Tests
     {
-
         public static void TestBookPrinters()
         {
             var book = new Book("1", "n", "g", false, 1900);
@@ -96,6 +95,5 @@ namespace NK_Library
                 menu.PerformAction();
             }
         }
-
     }
 }
