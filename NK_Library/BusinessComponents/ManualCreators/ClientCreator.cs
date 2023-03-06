@@ -2,7 +2,6 @@
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.ManualCreators;
 using System;
-using System.Linq;
 
 namespace NK_Library.BusinessComponents.ManualCreators
 {
@@ -19,24 +18,21 @@ namespace NK_Library.BusinessComponents.ManualCreators
             DateTime birthday = default;
             string phoneNumber = default;
 
-            var continueInput = InterruptableInput.TryReadString("Введите полное имя клиента:", out fullName);
-
-            if (!continueInput)
+            Func<bool>[] functions =
             {
-                PrintAbortWarning();
-                return false;
-            }
+                () => InterruptableInput.TryReadString("Введите полное имя клиента:", out fullName),
+                () => TryReadBirthday(out birthday),
+                () => TryReadPhoneNumber(out phoneNumber)
+            };
 
-            if (! TryReadBirthday(out birthday))
+            foreach (var function in functions)
             {
-                PrintAbortWarning();
-                return false;
-            }
-
-            if (!TryReadPhoneNumber(out phoneNumber))
-            {
-                PrintAbortWarning();
-                return false;
+                bool continueInput = function();
+                if (!continueInput)
+                {
+                    PrintAbortWarning();
+                    return false;
+                }
             }
 
             client = new Client(fullName, birthday, phoneNumber);
@@ -112,6 +108,8 @@ namespace NK_Library.BusinessComponents.ManualCreators
 
         private bool TryReadPhoneNumber(out string phoneNumber)
         {
+            const string beginPattern = "+7";
+
             phoneNumber = default;
 
             bool continueInput = true;
@@ -119,11 +117,11 @@ namespace NK_Library.BusinessComponents.ManualCreators
 
             while (continueInput)
             {
-                continueInput = InterruptableInput.TryReadString("Введите номер телефона в формате '+7**********':", out input);
+                continueInput = InterruptableInput.TryReadString($"Введите номер телефона в формате {beginPattern}'**********': {beginPattern}", out input);
 
                 if (CheckPhoneNumber(input))
                 {
-                    phoneNumber = input;
+                    phoneNumber = beginPattern + input;
                     return true;
                 }
                 else
@@ -138,9 +136,6 @@ namespace NK_Library.BusinessComponents.ManualCreators
         private bool CheckPhoneNumber(string input)
         {
             const int numberOfValues = 10;
-            const string beginPattern= "+7";
-
-            int totalChars = numberOfValues + beginPattern.Length;
 
             if (string.IsNullOrEmpty(input))
             {
@@ -148,16 +143,8 @@ namespace NK_Library.BusinessComponents.ManualCreators
             }
 
             var line = input.Trim();
-
-            if (line.Length != totalChars || 
-                ! line.StartsWith(beginPattern))
-            {
-                return false;
-            }
-
-            line = line.Substring(beginPattern.Length);
-
-            return line.ToCharArray().All(ch => char.IsDigit(ch));
+           
+            return line.Length == numberOfValues && int.TryParse(line, out int number);
         }
 
         #endregion PhoneNumber

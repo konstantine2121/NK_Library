@@ -36,14 +36,14 @@ namespace NK_Library.Dto
 
         public override bool Equals(object obj)
         {
-            var book = obj as Client;
+            var client = obj as Client;
 
-            if (book != null)
+            if (client != null)
             {
                 return
-                    book.FullName.Equals(FullName) &&
-                    book.Birthday.Equals(Birthday) &&
-                    book.PhoneNumber.Equals(PhoneNumber);
+                    client.FullName.Equals(FullName) &&
+                    client.Birthday.Equals(Birthday) &&
+                    client.PhoneNumber.Equals(PhoneNumber);
             }
 
             return false;

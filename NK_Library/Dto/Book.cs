@@ -23,7 +23,7 @@ namespace NK_Library.Dto
 
         public int YearOfPublication { get; }
 
-        public bool InfoEquals(Book book)
+        public bool CheckInfoEquals(Book book)
         {   
             if (book == null)
             {

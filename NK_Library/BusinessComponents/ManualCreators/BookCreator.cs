@@ -1,6 +1,7 @@
 ﻿using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.ManualCreators;
+using System;
 
 namespace NK_Library.BusinessComponents.ManualCreators
 {
@@ -22,43 +23,23 @@ namespace NK_Library.BusinessComponents.ManualCreators
             bool adultOnly = default;
             int yearOfPublication = default;
 
-            bool continueInput = false;
-
-            continueInput = InterruptableInput.TryReadString("Введите имя автора:", out author);
-
-            if (!continueInput) 
+            Func<bool>[] functions =
             {
-                PrintAbortWarning();
-                return false;
-            }
+                () => InterruptableInput.TryReadString("Введите имя автора:", out author),
+                () => InterruptableInput.TryReadString("Введите имя книги:", out bookName),
+                () => InterruptableInput.TryReadString("Введите жанр:", out genre),
+                () => InterruptableInput.TryReadBoolean("Введите есть ли ограничение по возрасту (0 - нет / 1-есть):", out adultOnly),
+                () => InterruptableInput.TryReadPositiveInteger("Введите год публикации:", out yearOfPublication)
+            };
 
-            continueInput = InterruptableInput.TryReadString("Введите имя книги:", out bookName);
-
-            if (!continueInput)
+            foreach(var function in functions) 
             {
-                PrintAbortWarning();
-                return false;
-            }
-            continueInput = InterruptableInput.TryReadString("Введите жанр:", out genre);
-
-            if (!continueInput)
-            {
-                PrintAbortWarning();
-                return false;
-            }
-            continueInput = InterruptableInput.TryReadBoolean("Введите есть ли ограничение по возрасту (0 - нет / 1-есть):", out adultOnly);
-
-            if (!continueInput)
-            {
-                PrintAbortWarning();
-                return false;
-            }
-            continueInput = InterruptableInput.TryReadPositiveInteger("Введите год публикации:", out yearOfPublication);
-
-            if (!continueInput)
-            {
-                PrintAbortWarning();
-                return false;
+                bool continueInput = function();
+                if (!continueInput)
+                {
+                    PrintAbortWarning();
+                    return false;
+                }
             }
 
             item = new Book(
