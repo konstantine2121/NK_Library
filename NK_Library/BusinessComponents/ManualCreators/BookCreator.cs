@@ -13,7 +13,7 @@ namespace NK_Library.BusinessComponents.ManualCreators
         {
             item = null;
 
-            Output.PrintInfo("Регистрация новой книги.");
+            Output.PrintInfo("Ввод данных по книге.");
             Output.PrintWarning($"Введите '{Enums.ConsoleComands.Exit}' для выхода.");
 
             string author = default;

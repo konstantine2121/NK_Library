@@ -2,6 +2,6 @@
 {
     internal interface ISelector<T>
     {
-        bool Select(out T item);
+        bool Select(out int itemId, out T item);
     }
 }

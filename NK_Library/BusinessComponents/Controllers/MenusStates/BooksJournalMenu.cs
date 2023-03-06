@@ -68,7 +68,7 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
         private void RemoveBook() 
         {
-            if (_bookSelector.Select(out Book book))
+            if (_bookSelector.Select(out int id, out Book book))
             {
                 if (BooksJournal.UnregisterBook(book))
                 {

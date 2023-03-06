@@ -20,11 +20,11 @@ namespace NK_Library.BusinessComponents.Selectors
             _booksJournal = booksJournal;
         }
 
-        public bool Select(out Book book)
+        public bool Select(out int id,out Book book)
         {
             book = null;
 
-            var id = Input.ReadPositiveInteger("Введите id книги:");
+            id = Input.ReadPositiveInteger("Введите id книги:");
 
             if (_booksJournal.CheckBookExists(id))
             {

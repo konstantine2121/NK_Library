@@ -12,7 +12,7 @@ namespace NK_Library.BusinessComponents.ManualCreators
         {
             client = null;
 
-            Output.PrintInfo("Регистрация нового клиента.");
+            Output.PrintInfo("Ввод даных по клиенту.");
             Output.PrintWarning($"Введите '{Enums.ConsoleComands.Exit}' для выхода.");
 
             string fullName = default;

@@ -6,6 +6,7 @@ using NK_Library.BusinessComponents.Selectors;
 using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
+using System.Linq;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
@@ -32,7 +33,8 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             Commands.Add(1, new MenuCommand("Показать список клиентов.", ShowClients));
             Commands.Add(2, new MenuCommand("Добавить клиента.", AddClient));
             Commands.Add(3, new MenuCommand("Удалить клиента.", RemoveClient));
-            Commands.Add(4, new MenuCommand("Вернуться в главное меню.", ReturnToMain));
+            Commands.Add(4, new MenuCommand("Обновить данные клиента.", UpdateClient));
+            Commands.Add(5, new MenuCommand("Вернуться в главное меню.", ReturnToMain));
         }
 
         private void ShowClients()
@@ -68,7 +70,7 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
         private void RemoveClient()
         {
-            if (_clientSelector.Select(out Client client))
+            if (_clientSelector.Select(out int id, out Client client))
             {
                 if (ClientsJournal.UnregisterClient(client))
                 {
@@ -85,6 +87,45 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             }
 
             PrintInputWelcome();
+        }
+
+        private void UpdateClient()
+        {
+            Output.PrintInfo("Выберите клиента для изменения данных.");
+
+            if (!_clientSelector.Select(out int id, out Client clientOld))
+            {
+                Output.PrintWarning("Клиент не найден.");
+
+                PrintInputWelcome();
+                return;
+            }
+
+            Output.PrintInfo("Старые данные.");
+            _printer.PrintInfo(clientOld);
+
+            Output.PrintInfo("Ввод новых данных.");
+
+            var notCanceled = _bookCreator.TryCreate(out Client client);
+
+            if (notCanceled)
+            {
+                if (ClientsJournal.UpdateClient(id, client))
+                {
+                    Output.PrintInfo("Запись обновлена.");
+                }
+                else
+                {
+                    Output.PrintError("Ошибка при обновлении.");
+                }
+            }
+            else
+            {
+                Output.PrintWarning("Операция отменена.");
+            }
+
+            PrintInputWelcome();
+
         }
 
         private void ReturnToMain()

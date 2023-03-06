@@ -20,15 +20,15 @@ namespace NK_Library.BusinessComponents.Selectors
             _clientsJournal = clientsJournal;
         }
 
-        public bool Select(out Client book)
+        public bool Select(out int id, out Client client)
         {
-            book = null;
+            client = null;
 
-            var id = Input.ReadPositiveInteger("Введите id клиента:");
+            id = Input.ReadPositiveInteger("Введите id клиента:");
 
             if (_clientsJournal.CheckClientExists(id))
             {
-                book = _clientsJournal.Clients[id];
+                client = _clientsJournal.Clients[id];
 
                 return true;
             }
