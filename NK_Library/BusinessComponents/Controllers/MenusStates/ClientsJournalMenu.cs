@@ -6,7 +6,6 @@ using NK_Library.BusinessComponents.Selectors;
 using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
-using System.Linq;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {

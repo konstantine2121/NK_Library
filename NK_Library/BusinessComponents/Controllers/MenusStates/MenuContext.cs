@@ -15,7 +15,7 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
             }
 
             MainMenu = new MainMenu(this, this);
-            ExitConfirmationDidalog = new ExitConfirmationDidalog(this, this);
+            ExitConfirmationDidalog = new ExitConfirmationDialog(this, this);
             BooksJournalMenu = new BooksJournalMenu(this, this, library.BooksJournal);
             ClientsJournalMenu = new ClientsJournalMenu(this, this, library.ClientsJournal);
             BookOutsideJournalMenu = new BookOutsideJournalMenu(this, this, library.BookOutsideJournal);

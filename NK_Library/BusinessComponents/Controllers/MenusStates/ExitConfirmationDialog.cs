@@ -4,9 +4,9 @@ using System;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
-    internal class ExitConfirmationDidalog : BaseMenuState
+    internal class ExitConfirmationDialog : BaseMenuState
     {
-        public ExitConfirmationDidalog(IMenuContext menuContext, IMenuStatesProvider statesProvider) : base(menuContext, statesProvider)
+        public ExitConfirmationDialog(IMenuContext menuContext, IMenuStatesProvider statesProvider) : base(menuContext, statesProvider)
         {
         }
 

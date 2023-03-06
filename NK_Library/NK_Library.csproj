@@ -44,12 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessComponents\Builders\LibraryFactoryBuilder.cs" />
+    <Compile Include="BusinessComponents\Builders\LibraryModuleBuilder.cs" />
     <Compile Include="BusinessComponents\Controllers\MenuCommands\MenuCommand.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\BaseMenuState.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\BookOutsideJournalMenu.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\BooksJournalMenu.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\ClientsJournalMenu.cs" />
-    <Compile Include="BusinessComponents\Controllers\MenusStates\ExitConfirmationDidalog.cs" />
+    <Compile Include="BusinessComponents\Controllers\MenusStates\ExitConfirmationDialog.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\MainMenu.cs" />
     <Compile Include="BusinessComponents\Controllers\MenusStates\MenuContext.cs" />
     <Compile Include="BusinessComponents\Factories\LibraryFactory.cs" />
@@ -84,8 +85,10 @@
     <Compile Include="Interfaces\BusinessComponents\Journals\IReadOnlyClientsJournal.cs" />
     <Compile Include="Interfaces\BusinessComponents\ManualCreators\IManualCreator.cs" />
     <Compile Include="Interfaces\BusinessComponents\Selectors\ISelector.cs" />
+    <Compile Include="LibraryModule.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
