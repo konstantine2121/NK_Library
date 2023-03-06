@@ -3,14 +3,15 @@ using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.Selectors;
 using NK_Library.ConsoleInputOutput;
 using System;
+using NK_Library.Interfaces.BusinessComponents.Journals;
 
 namespace NK_Library.BusinessComponents.Selectors
 {
     internal class BookSelector : ISelector<Book>
     {
-        private readonly BooksJournal _booksJournal;
+        private readonly IReadOnlyBooksJournal _booksJournal;
 
-        public BookSelector(BooksJournal booksJournal)
+        public BookSelector(IReadOnlyBooksJournal booksJournal)
         {
             if (booksJournal == null)
             {

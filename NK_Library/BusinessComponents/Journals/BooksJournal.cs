@@ -1,4 +1,5 @@
 ﻿using NK_Library.Dto;
+using NK_Library.Interfaces.BusinessComponents.Journals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,7 +8,7 @@ namespace NK_Library.BusinessComponents.Journals
     /// <summary>
     /// Журнал учета всех книг в библиотеке.
     /// </summary>
-    internal class BooksJournal
+    internal class BooksJournal : IReadOnlyBooksJournal
     {
         private readonly IdCounter _booksCounter = new IdCounter(0);
         private Dictionary<int, Book> _books = new Dictionary<int, Book>();

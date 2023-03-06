@@ -1,6 +1,7 @@
 ﻿using NK_Library.BusinessComponents.Journals;
 using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
+using NK_Library.Interfaces.BusinessComponents.Journals;
 using NK_Library.Interfaces.BusinessComponents.Selectors;
 using System;
 
@@ -8,9 +9,9 @@ namespace NK_Library.BusinessComponents.Selectors
 {
     internal class ClientSelector : ISelector<Client>
     {
-        private readonly ClientsJournal _clientsJournal;
+        private readonly IReadOnlyClientsJournal _clientsJournal;
 
-        public ClientSelector(ClientsJournal clientsJournal)
+        public ClientSelector(IReadOnlyClientsJournal clientsJournal)
         {
             if (clientsJournal == null)
             {

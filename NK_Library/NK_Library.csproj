@@ -80,6 +80,8 @@
     <Compile Include="Interfaces\BusinessComponents\Controllers\MenusStates\IMenuStatesProvider.cs" />
     <Compile Include="Interfaces\BusinessComponents\Factories\ICreator.cs" />
     <Compile Include="Interfaces\BusinessComponents\IInfoPrinter.cs" />
+    <Compile Include="Interfaces\BusinessComponents\Journals\IReadOnlyBooksJournal.cs" />
+    <Compile Include="Interfaces\BusinessComponents\Journals\IReadOnlyClientsJournal.cs" />
     <Compile Include="Interfaces\BusinessComponents\ManualCreators\IManualCreator.cs" />
     <Compile Include="Interfaces\BusinessComponents\Selectors\ISelector.cs" />
     <Compile Include="Program.cs" />

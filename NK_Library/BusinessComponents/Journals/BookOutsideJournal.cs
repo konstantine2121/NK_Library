@@ -1,4 +1,5 @@
 ﻿using NK_Library.Dto;
+using NK_Library.Interfaces.BusinessComponents.Journals;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,7 +12,7 @@ namespace NK_Library.BusinessComponents.Journals
     {
         private List<BookOutside> _bookOutside = new List<BookOutside>();
 
-        public BookOutsideJournal(BooksJournal booksJournal, ClientsJournal clientsJournal)
+        public BookOutsideJournal(IReadOnlyBooksJournal booksJournal, IReadOnlyClientsJournal clientsJournal)
         {
             BooksJournal = booksJournal;
             ClientsJournal = clientsJournal;
@@ -19,9 +20,9 @@ namespace NK_Library.BusinessComponents.Journals
 
         public IEnumerable<BookOutside> BookOutsides => _bookOutside;
 
-        private BooksJournal BooksJournal { get; }
+        public IReadOnlyBooksJournal BooksJournal { get; }
 
-        private ClientsJournal ClientsJournal { get; }
+        public IReadOnlyClientsJournal ClientsJournal { get; }
 
         public bool CheckBookOutside(Book book)
         {
