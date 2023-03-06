@@ -6,6 +6,7 @@ using NK_Library.BusinessComponents.Selectors;
 using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
+using System.Collections.Generic;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
@@ -25,16 +26,14 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
         private ClientsJournal ClientsJournal { get; }
 
-        protected override void RegisterCommands()
+        protected override Dictionary<int, MenuCommand> Commands => new Dictionary<int, MenuCommand>
         {
-            Commands.Clear();
-
-            Commands.Add(1, new MenuCommand("Показать список клиентов.", ShowClients));
-            Commands.Add(2, new MenuCommand("Добавить клиента.", AddClient));
-            Commands.Add(3, new MenuCommand("Удалить клиента.", RemoveClient));
-            Commands.Add(4, new MenuCommand("Обновить данные клиента.", UpdateClient));
-            Commands.Add(5, new MenuCommand("Вернуться в главное меню.", ReturnToMain));
-        }
+            [1] = new MenuCommand("Показать список клиентов.", ShowClients),
+            [2] = new MenuCommand("Добавить клиента.", AddClient),
+            [3] = new MenuCommand("Удалить клиента.", RemoveClient),
+            [4] = new MenuCommand("Обновить данные клиента.", UpdateClient),
+            [5] = new MenuCommand("Вернуться в главное меню.", ReturnToMain),
+        };
 
         private void ShowClients()
         {

@@ -6,6 +6,7 @@ using NK_Library.ConsoleInputOutput;
 using NK_Library.Dto;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
@@ -30,15 +31,14 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
         public BookOutsideJournal BookOutsideJournal { get; }
 
-        protected override void RegisterCommands()
+        protected override Dictionary<int, MenuCommand> Commands => new Dictionary<int, MenuCommand> 
         {
-            Commands.Clear();
-            Commands.Add(1, new MenuCommand("Показать список выданных книг.", PrintAllOutsideBooks));
-            Commands.Add(2, new MenuCommand("Показать список клиентов у кого книги на руках.", PrintAllClientsWithBooks));
-            Commands.Add(3, new MenuCommand("Выдать книгу.", GiveBookToClient));
-            Commands.Add(4, new MenuCommand("Вернуть книгу.", ReturnBook));
-            Commands.Add(5, new MenuCommand("Вернуться в меню.", ReturnToMain));
-        }
+            [1] = new MenuCommand("Показать список выданных книг.", PrintAllOutsideBooks),
+            [2] = new MenuCommand("Показать список клиентов у кого книги на руках.", PrintAllClientsWithBooks),
+            [3] = new MenuCommand("Выдать книгу.", GiveBookToClient),
+            [4] = new MenuCommand("Вернуть книгу.", ReturnBook),
+            [5] = new MenuCommand("Вернуться в меню.", ReturnToMain)
+        };
 
         private void PrintAllOutsideBooks()
         {

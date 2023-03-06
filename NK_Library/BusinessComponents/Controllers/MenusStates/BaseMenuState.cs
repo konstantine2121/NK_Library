@@ -8,11 +8,7 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
     internal abstract class BaseMenuState : IMenuState
     {
-        /// <summary>
-        /// Список команд
-        /// </summary>
-        protected readonly Dictionary<int, MenuCommand> Commands = new Dictionary<int, MenuCommand>();
-
+        
         protected readonly IMenuContext MenuContext;
         protected readonly IMenuStatesProvider StatesProvider;
 
@@ -30,15 +26,14 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
             MenuContext = menuContext;
             StatesProvider = statesProvider;
-            RegisterCommands();
         }
 
         public abstract string Name { get; }
 
         /// <summary>
-        /// Зарегистрировать команды для словаря Commands.
+        /// Список команд
         /// </summary>
-        protected abstract void RegisterCommands();
+        protected abstract Dictionary<int, MenuCommand> Commands { get; }
 
         public virtual void PerformAction()
         {

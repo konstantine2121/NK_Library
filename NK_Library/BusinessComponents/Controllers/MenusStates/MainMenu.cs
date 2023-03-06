@@ -1,6 +1,6 @@
 ﻿using NK_Library.BusinessComponents.Controllers.MenuCommands;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
-
+using System.Collections.Generic;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
@@ -12,15 +12,13 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
         public override string Name => "Главное меню";
 
-        protected override void RegisterCommands()
+        protected override Dictionary<int, MenuCommand> Commands => new Dictionary<int, MenuCommand>
         {
-            Commands.Clear();
-
-            Commands.Add(1, new MenuCommand("Журнал книг.", OpenBooksJournal));
-            Commands.Add(2, new MenuCommand("Журнал клиентов.", OpenClientsJournal));
-            Commands.Add(3, new MenuCommand("Журнал выдачи книг.", OpenBooksOutsideJournal));
-            Commands.Add(4, new MenuCommand("Выход из программы.", OpenExitDialog));
-        }
+            [1] = new MenuCommand("Журнал книг.", OpenBooksJournal),
+            [2] = new MenuCommand("Журнал клиентов.", OpenClientsJournal),
+            [3] = new MenuCommand("Журнал выдачи книг.", OpenBooksOutsideJournal),
+            [4] = new MenuCommand("Выход из программы.", OpenExitDialog)
+        };
 
         private void OpenBooksJournal()
         {

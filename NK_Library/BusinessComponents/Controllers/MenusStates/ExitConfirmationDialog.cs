@@ -1,6 +1,7 @@
 ﻿using NK_Library.BusinessComponents.Controllers.MenuCommands;
 using NK_Library.Interfaces.BusinessComponents.Controllers.MenusStates;
 using System;
+using System.Collections.Generic;
 
 namespace NK_Library.BusinessComponents.Controllers.MenusStates
 {
@@ -12,13 +13,11 @@ namespace NK_Library.BusinessComponents.Controllers.MenusStates
 
         public override string Name => "Вы хотите выйти?";
 
-        protected override void RegisterCommands()
+        protected override Dictionary<int, MenuCommand> Commands => new Dictionary<int, MenuCommand>
         {
-            Commands.Clear();
-
-            Commands.Add(1, new MenuCommand("Вернуться в главное меню", ReturnToMain));
-            Commands.Add(2, new MenuCommand("Выход из программы", Exit));
-        }
+            [1] = new MenuCommand("Вернуться в главное меню", ReturnToMain),
+            [2] = new MenuCommand("Выход из программы", Exit)
+        };
 
         private void ReturnToMain()
         {
