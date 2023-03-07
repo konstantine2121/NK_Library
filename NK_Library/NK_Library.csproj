@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>NK_Library</RootNamespace>
     <AssemblyName>NK_Library</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
